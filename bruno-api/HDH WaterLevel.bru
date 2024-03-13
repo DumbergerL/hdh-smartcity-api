@@ -1,0 +1,17 @@
+meta {
+  name: HDH WaterLevel
+  type: http
+  seq: 7
+}
+
+get {
+  url: https://staging.dashboard.heidenheim.de/api/historical/?valueKey=level&datetime__gte=2024-03-12T09:16:04.502Z&groupIdentifier=80a8b019-d29a-45f9-9546-d4bff59c3bee
+  body: none
+  auth: none
+}
+
+query {
+  valueKey: level
+  datetime__gte: 2024-03-12T09:16:04.502Z
+  groupIdentifier: 80a8b019-d29a-45f9-9546-d4bff59c3bee
+}

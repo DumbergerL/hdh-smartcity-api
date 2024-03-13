@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "AA-HDH-SmartCity",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

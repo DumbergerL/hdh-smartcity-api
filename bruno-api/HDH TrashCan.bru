@@ -1,0 +1,17 @@
+meta {
+  name: HDH TrashCan
+  type: http
+  seq: 9
+}
+
+get {
+  url: https://staging.dashboard.heidenheim.de/api/historical/?datetime__gte=2024-03-12T09:16:04.503Z&groupIdentifier=3d04bfd6-5f14-45bf-bc31-98deaef5ea54&valueKey=filling
+  body: none
+  auth: none
+}
+
+query {
+  datetime__gte: 2024-03-12T09:16:04.503Z
+  groupIdentifier: 3d04bfd6-5f14-45bf-bc31-98deaef5ea54
+  valueKey: filling
+}

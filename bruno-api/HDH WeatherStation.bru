@@ -1,0 +1,17 @@
+meta {
+  name: HDH WeatherStation
+  type: http
+  seq: 8
+}
+
+get {
+  url: https://staging.dashboard.heidenheim.de/api/historical/?labelIdentifier=10517&datetime__gte=2024-03-12T09:16:04.502Z&groupIdentifier=d005a790-eded-4cde-a090-06a55c3874d5
+  body: none
+  auth: none
+}
+
+query {
+  labelIdentifier: 10517
+  datetime__gte: 2024-03-12T09:16:04.502Z
+  groupIdentifier: d005a790-eded-4cde-a090-06a55c3874d5
+}

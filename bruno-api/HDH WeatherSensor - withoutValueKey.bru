@@ -1,0 +1,17 @@
+meta {
+  name: HDH WeatherSensor - withoutValueKey
+  type: http
+  seq: 12
+}
+
+get {
+  url: https://staging.dashboard.heidenheim.de/api/historical/?datetime__gte=2024-03-12T09:16:04.503Z&groupIdentifier=78e89a84-b206-4b75-96a4-3aca3f722aa0&valueKey=humidity,barometric_pressure,particle.PM10.mass,particle.PM2.5.mass
+  body: none
+  auth: none
+}
+
+query {
+  datetime__gte: 2024-03-12T09:16:04.503Z
+  groupIdentifier: 78e89a84-b206-4b75-96a4-3aca3f722aa0
+  valueKey: humidity,barometric_pressure,particle.PM10.mass,particle.PM2.5.mass
+}

@@ -1,0 +1,16 @@
+meta {
+  name: HDH PersonFrequency - groupIdentifier
+  type: http
+  seq: 4
+}
+
+get {
+  url: https://staging.dashboard.heidenheim.de/api/historical/?valueKey=person.in,person.out,current.right_to_left,current.left_to_right&datetime__gte=2024-03-12T09:16:04.500Z
+  body: none
+  auth: none
+}
+
+query {
+  valueKey: person.in,person.out,current.right_to_left,current.left_to_right
+  datetime__gte: 2024-03-12T09:16:04.500Z
+}

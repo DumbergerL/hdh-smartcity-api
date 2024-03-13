@@ -1,0 +1,17 @@
+meta {
+  name: HDH PersonFrequency - labelIdentifier
+  type: http
+  seq: 3
+}
+
+get {
+  url: https://staging.dashboard.heidenheim.de/api/historical/?valueKey=person.in,person.out,current.right_to_left,current.left_to_right&labelIdentifier=3bc2a1ae-8a6f-4cc6-aab0-0e7ac50f3077,3bc2a1ae-8a6f-4cc6-aab0-0e7ac50f3077,8752218d-1afc-468f-9f89-79576547798c,8752218d-1afc-468f-9f89-79576547798c,ab81bd2b-4557-4b1d-8b58-8abfce00c5a0,ab81bd2b-4557-4b1d-8b58-8abfce00c5a0,71e09626-6b0d-42c4-91e1-1ddc59e03c0e,71e09626-6b0d-42c4-91e1-1ddc59e03c0e,95a79150-a49c-4580-8397-aa380cc596e3,hdh-pc-05,hdh-pc-05,4d56e281-b89b-4be2-9468-2e70ceb6d876,hdh-pc05&datetime__gte=2024-03-12T09:16:04.500Z
+  body: none
+  auth: none
+}
+
+query {
+  valueKey: person.in,person.out,current.right_to_left,current.left_to_right
+  labelIdentifier: 3bc2a1ae-8a6f-4cc6-aab0-0e7ac50f3077,3bc2a1ae-8a6f-4cc6-aab0-0e7ac50f3077,8752218d-1afc-468f-9f89-79576547798c,8752218d-1afc-468f-9f89-79576547798c,ab81bd2b-4557-4b1d-8b58-8abfce00c5a0,ab81bd2b-4557-4b1d-8b58-8abfce00c5a0,71e09626-6b0d-42c4-91e1-1ddc59e03c0e,71e09626-6b0d-42c4-91e1-1ddc59e03c0e,95a79150-a49c-4580-8397-aa380cc596e3,hdh-pc-05,hdh-pc-05,4d56e281-b89b-4be2-9468-2e70ceb6d876,hdh-pc05
+  datetime__gte: 2024-03-12T09:16:04.500Z
+}

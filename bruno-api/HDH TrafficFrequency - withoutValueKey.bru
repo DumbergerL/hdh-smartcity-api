@@ -1,0 +1,17 @@
+meta {
+  name: HDH TrafficFrequency - withoutValueKey
+  type: http
+  seq: 6
+}
+
+get {
+  url: https://staging.dashboard.heidenheim.de/api/historical/?datetime__gte=2024-03-12T09:16:04.501Z&datetime__lte=2024-03-13T09:16:04.501Z&labelIdentifier=83e9725b-2994-49c9-9e6c-b12eb5250809,841db5c7-fd00-470c-8854-e65e52b3c010
+  body: none
+  auth: none
+}
+
+query {
+  datetime__gte: 2024-03-12T09:16:04.501Z
+  datetime__lte: 2024-03-13T09:16:04.501Z
+  labelIdentifier: 83e9725b-2994-49c9-9e6c-b12eb5250809,841db5c7-fd00-470c-8854-e65e52b3c010
+}
