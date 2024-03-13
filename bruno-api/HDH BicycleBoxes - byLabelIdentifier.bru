@@ -1,0 +1,17 @@
+meta {
+  name: HDH BicycleBoxes - byLabelIdentifier
+  type: http
+  seq: 2
+}
+
+get {
+  url: https://staging.dashboard.heidenheim.de/api/historical/?valueKey=status&datetime__gte=2024-03-12T09:16:04.498Z&labelIdentifier=unit405
+  body: none
+  auth: none
+}
+
+query {
+  valueKey: status
+  datetime__gte: 2024-03-12T09:16:04.498Z
+  labelIdentifier: unit405
+}

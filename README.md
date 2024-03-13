@@ -11,3 +11,10 @@ Aalen and Heidenheim are jointly developing their cities into smart cities. The 
 ## API Example Reqeusts
 
 To test API endpoints, I use [Bruno](https://github.com/usebruno/bruno) instead of e.g. Postman because the sample requests can be versioned in git. The sample requests are stored in the `bruno-api` folder.
+
+## API Documentation
+
+See the API Documentation for information on the API endpoints:
+
+- [API Doucmentation Heidenheim](HDH-API-Documentation.md)
+- [API Doucmentation Aalen](AA-API-Documentation.md) (incomplete)
