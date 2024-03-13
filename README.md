@@ -23,6 +23,6 @@ See the inofficial API Documentation:
 
 Each sensor in the Smart City has a geographical position. I've generated a map that visualizes all sensors. The project source is in the `hdh-sensor-map` folder:
 
-[https://dumbergerl.github.io/aa-hdh-smartcity-api/hdh-sensor-map/](https://dumbergerl.github.io/aa-hdh-smartcity-api/hdh-sensor-map/)
+[https://dumbergerl.github.io/hdh-smartcity-api/hdh-sensor-map/](https://dumbergerl.github.io/hdh-smartcity-api/hdh-sensor-map/)
 
 ![Thumbnail Map](hdh-sensor-map/thumbnail.png)
