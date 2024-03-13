@@ -14,7 +14,15 @@ To test API endpoints, I use [Bruno](https://github.com/usebruno/bruno) instead 
 
 ## API Documentation
 
-See the API Documentation for information on the API endpoints:
+See the inofficial API Documentation:
 
 - [API Doucmentation Heidenheim](HDH-API-Documentation.md)
 - [API Doucmentation Aalen](AA-API-Documentation.md) (incomplete)
+
+## Map with Sensors
+
+Each sensor in the Smart City has a geographical position. I've generated a map that visualizes all sensors. The project source is in the `hdh-sensor-map` folder:
+
+[https://dumbergerl.github.io/aa-hdh-smartcity-api/hdh-sensor-map/](https://dumbergerl.github.io/aa-hdh-smartcity-api/hdh-sensor-map/)
+
+![Thumbnail Map](hdh-sensor-map/thumbnail.png)
