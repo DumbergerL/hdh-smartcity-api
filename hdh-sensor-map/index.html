@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>HDH Sensor Map</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+ integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+ crossorigin=""></script>
+ <script src="location-data.js"></script>
+</head>
+<body>
+    <div id="map"></div>
+    <style>
+        #map { height: 100vh; }
+        img.byciclebox { filter: hue-rotate(90deg); }
+        img.parking { filter: hue-rotate(180deg); }
+        img.traffic { filter: hue-rotate(270deg); }
+        img.trash { filter: hue-rotate(360deg); }
+        img.water { filter: hue-rotate(130deg); }
+        img.weather { filter: hue-rotate(0deg); }        
+    </style>
+    <script>
+        var map = L.map('map').setView([48.6782141, 10.1525739], 15);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        var markerArray = window.LOCATION_DATA.map(sensorData => {
+            if(sensorData.latitude == null || sensorData.longitude == null){
+                return null;
+            }
+            
+            var marker = L.marker([sensorData.latitude, sensorData.longitude]).addTo(map)
+            marker.bindPopup("<b>" + sensorData.name + "</b><br>type: " + sensorData.type + "<br>labelIdentifier: <small>" + sensorData.labelIdentifier + "</small><br>groupIdentifier: <small>" + sensorData.groupIdentifier + "</small>").openPopup();
+            
+            if(sensorData.type === 'BycicleBox'){
+                marker._icon.classList.add("byciclebox");
+            }else if(sensorData.type === 'ParkingSensor'){
+                marker._icon.classList.add("parking");
+            }else if(sensorData.type === 'TrafficFrequency'){
+                marker._icon.classList.add("traffic");
+            }else if(sensorData.type === 'TrashCan'){
+                marker._icon.classList.add("trash");
+            }else if(sensorData.type === 'WaterLevel'){
+                marker._icon.classList.add("water");
+            }else if(sensorData.type === 'WeatherSensor' || sensorData.type === 'WeatherStation'){
+                marker._icon.classList.add("weather");
+            }
+            return marker;
+        });
+    </script>
+</body>
+</html>
