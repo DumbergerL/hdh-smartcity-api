@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>HDH Traffic Heat Map</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+ integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+ crossorigin=""></script>
+ <script src="map-data.js"></script>
+</head>
+<body>
+
+    <main class="container">
+        <h1>Traffic</h1>
+        <div class="grid">
+            <div>
+                Datum: <span id="date"></span>
+            </div>            
+            <div>
+                <input id="dateRangePicker" type="range" min="0" max="100" step="1" />
+            </div>
+            <div role="group">
+                <button id="previous"><</button>
+                <button id="playAnimationButton">Start</button>
+                <button id="next">></button>        
+            </div>
+        </div>
+        <div id="map"></div>
+      </main>
+
+
+  
+    <style>
+        #map { height: 80vh; }
+        .animated-icon{
+            width: 20px;
+            height: 20px;
+            background-color: #0172ad8a;
+            border-radius: 50%;
+            box-shadow: 0px 0px 4px white;
+            transition: all 1s;
+        }
+        
+    </style>
+    <script>
+        var map = L.map('map').setView([48.6782141, 10.1525739], 15);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+     
+        /**
+         * FUNCTIONS
+         */
+        function renderMarkerForDate(date){
+            window.MAP_DATA.data.forEach(sensorData => {
+                //const marker = markerMap[sensorData.id];
+                const icon = document.querySelector('.SENSOR-' + sensorData.id);
+
+                sensorPoint = sensorData.data[date];
+                if(sensorPoint != undefined){
+                    const pointSize = sensorPoint['car.in'] * 1;
+                    icon.style.width = pointSize + 'px'
+                    icon.style.height = pointSize + 'px'
+                    icon.style.marginLeft = '-' + parseInt(pointSize / 2) + 'px'
+                    icon.style.marginTop = '-' + parseInt(pointSize / 2) + 'px'
+                }
+            });
+        }
+
+        var animationInterval = null;
+        var currentIndex = 0;
+
+        function stopAnimation()
+        {
+            clearInterval(animationInterval);
+        }
+
+        function startAnimation()
+        {
+            animationInterval = setInterval(() => {
+                increaseIndex();
+                currentIndexChanged();               
+            }, 500);
+        }
+
+        function increaseIndex()
+        {
+            if(currentIndex < (window.MAP_DATA.meta.available_dates.length - 1)){
+                currentIndex++;
+            }else{
+                currentIndex = 0;
+            }
+        }
+
+        function decreaseIndex()
+        {
+            if(currentIndex === 0){
+                currentIndex = window.MAP_DATA.meta.available_dates.length - 1;
+            }else{
+                currentIndex--;
+            }
+        }
+
+        function currentIndexChanged()
+        {
+            dateRangePicker.value = currentIndex;
+            const date = window.MAP_DATA.meta.available_dates[currentIndex];
+            renderMarkerForDate(date);
+
+            const dateElement = document.getElementById("date");
+            dateElement.innerHTML = date;
+        }
+
+        /**
+         * INITIALIZE MARKER AND TIMER
+         */
+
+        // key: sensorId => value: leafletMarker
+        var markerMap = {};
+
+        window.MAP_DATA.data.forEach(sensorData => {
+            if(sensorData.latitude == null || sensorData.longitude == null){
+                return;
+            }
+
+            /*var marker = L.circle([sensorData.latitude, sensorData.longitude]).addTo(map);*/
+            var icon = L.divIcon({
+                iconSize: [30, 30],
+                iconAnchor: [15, 15],
+                popupAnchor: [10, 0],
+                shadowSize: [0, 0],
+                className: 'animated-icon SENSOR-' + sensorData.id,
+                html: ''
+            });
+            var marker = L.marker([sensorData.latitude, sensorData.longitude], {icon: icon}).addTo(map);
+            markerMap[sensorData.id] = marker;
+        });
+
+        // Date Picker
+        const dateRangePicker = document.getElementById("dateRangePicker");
+        dateRangePicker.setAttribute('max', window.MAP_DATA.meta.available_dates.length - 1);
+        dateRangePicker.addEventListener('change', event => {
+            currentIndex = event.target.value;
+            currentIndexChanged();
+        })
+
+        // Animation Button
+        var animationIsPlaying = false;
+        const animationButton = document.getElementById("playAnimationButton");
+        animationButton.addEventListener('click', () => {
+            if(animationIsPlaying){
+                stopAnimation();
+                animationButton.innerText = 'Start';
+            }else{
+                startAnimation();
+                animationButton.innerText = 'Stop';
+            }            
+            animationIsPlaying = !animationIsPlaying;
+
+        })
+        document.getElementById("previous").addEventListener('click', () => {
+            decreaseIndex();
+            currentIndexChanged();
+            
+        });
+        document.getElementById("next").addEventListener('click', () => {
+            increaseIndex();
+            currentIndexChanged();
+
+        });
+
+    </script>
+</body>
+</html>

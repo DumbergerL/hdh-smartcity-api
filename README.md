@@ -26,3 +26,9 @@ Each sensor in the Smart City has a geographical position. I've generated a map 
 [https://dumbergerl.github.io/hdh-smartcity-api/hdh-sensor-map/](https://dumbergerl.github.io/hdh-smartcity-api/hdh-sensor-map/)
 
 ![Thumbnail Map](hdh-sensor-map/thumbnail.png)
+
+## Traffic Heat Map
+
+Animation of traffic for one week (Folder: `hdh-traffic-heat-map`).
+
+[https://dumbergerl.github.io/hdh-smartcity-api/hdh-traffic-heat-map/](https://dumbergerl.github.io/hdh-smartcity-api/hdh-traffic-heat-map/)

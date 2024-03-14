@@ -1,0 +1,17 @@
+meta {
+  name: HDH Traffic HeatMap
+  type: http
+  seq: 14
+}
+
+get {
+  url: https://staging.dashboard.heidenheim.de/api/historical/?datetime__gte=2024-01-07T00:00:00.501Z&labelIdentifier=40ec1c8b-074c-44a9-bd2a-99f9e695053d,4287eb6b-0f23-4253-9e9b-2a276a5c601d,ee4f6701-0293-45a0-8a50-c7c095b7297f,22ac61b5-6437-4e47-bc20-e98a0c264c6c,c71c01bd-97ec-4c79-ad03-f179501ec296,7bedf600-816a-4fd3-8a18-57544f29c081,3841b42b-f021-4b9a-8120-d93f0a6aa055,1651986e-37a2-4549-98ef-374a1bf12426
+  body: none
+  auth: none
+}
+
+query {
+  datetime__gte: 2024-01-07T00:00:00.501Z
+  labelIdentifier: 40ec1c8b-074c-44a9-bd2a-99f9e695053d,4287eb6b-0f23-4253-9e9b-2a276a5c601d,ee4f6701-0293-45a0-8a50-c7c095b7297f,22ac61b5-6437-4e47-bc20-e98a0c264c6c,c71c01bd-97ec-4c79-ad03-f179501ec296,7bedf600-816a-4fd3-8a18-57544f29c081,3841b42b-f021-4b9a-8120-d93f0a6aa055,1651986e-37a2-4549-98ef-374a1bf12426
+  ~valueKey: car.in,car.out,truck.in,truck.out,bicycle.in,bicycle.out,bus.in,bus.out,van.in,van.out,motorbike.in,motorbike.out
+}
