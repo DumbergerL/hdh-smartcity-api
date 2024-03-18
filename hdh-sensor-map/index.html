@@ -31,12 +31,21 @@
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
 
+        function scatter(value, maxValue){
+            const random = Math.random() * maxValue;
+            const delta = random - (maxValue / 2);
+            return value + delta;
+        }
+
         var markerArray = window.LOCATION_DATA.map(sensorData => {
             if(sensorData.latitude == null || sensorData.longitude == null){
                 return null;
             }
             
-            var marker = L.marker([sensorData.latitude, sensorData.longitude]).addTo(map)
+            const latScatter = scatter(sensorData.latitude, 0.00009)
+            const lngScatter = scatter(sensorData.longitude, 0.00009)
+            
+            var marker = L.marker([latScatter, lngScatter]).addTo(map)
             marker.bindPopup("<b>" + sensorData.name + "</b><br>type: " + sensorData.type + "<br>labelIdentifier: <small>" + sensorData.labelIdentifier + "</small><br>groupIdentifier: <small>" + sensorData.groupIdentifier + "</small>").openPopup();
             
             if(sensorData.type === 'BycicleBox'){
